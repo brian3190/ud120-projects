@@ -29,8 +29,12 @@ features_train, features_test, labels_train, labels_test = preprocess()
 # predicting time 1.248s vs 20.721s
 # accuracy 0.8845(1% training data) vs 0.9841(linear) vs 0.6160(rbf)
 #
-features_train = features_train[:len(features_train)/100]
-labels_train = labels_train[:len(labels_train)/100]
+####### Using full training set: Optimized RBF, comment the following two lines
+# features_train = features_train[:len(features_train)/100]
+# labels_train = labels_train[:len(labels_train)/100]
+# training time=139.307s, predicting time=15.411s, accuracy=0.9909
+
+
 
 # low C, straighter boundary
 # high C, better accuracy, more complex boundary
@@ -38,6 +42,7 @@ labels_train = labels_train[:len(labels_train)/100]
 # C=1000.0, training time=0.126s, predicting time=1.359s, accuracy=0.8214
 # C=100.0, training time=0.136s, predicting time=1.421s, accuracy=0.6160
 # C=10.0, training time=0.153s , predicting time=1.483s, accuracy=0.6160
+
 from sklearn.svm import SVC
 clf = SVC(kernel='rbf', C=10000.0)
 t0 = time()
@@ -51,5 +56,9 @@ print "predicting time:",round(time()-t1, 3), "s"
 from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(pred, labels_test)
 print accuracy
+
+
+print sum(pred)
+
 
 #########################################################
