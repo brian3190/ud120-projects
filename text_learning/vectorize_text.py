@@ -75,6 +75,8 @@ print word_data[152]
 print len(word_data)
 ### in Part 4, do TfIdf vectorization here
 
+
+# Using TfidfVectorizer to transform into matrix
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 sw = stopwords.words("english")
